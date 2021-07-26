@@ -16,5 +16,5 @@
     "isolatedModules": false
   },
   "include": ["src"],
-  "exclude": ["src/**/demos/*.tsx"]
+  "exclude": ["src/**/demos/*.tsx"],
 }

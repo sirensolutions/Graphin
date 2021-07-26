@@ -507,3 +507,7 @@ export interface IconLoader {
     }[];
   };
 }
+
+export interface PlainObject {
+  [key: string]: any;
+}

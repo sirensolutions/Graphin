@@ -34,7 +34,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-explicit-any': 0,
     'react/display-name': 'off',
     'react/jsx-props-no-spreading': 0,
     'operator-assignment': 0,
@@ -51,5 +51,6 @@ module.exports = {
     '@typescript-eslint/no-object-literal-type-assertion': 0,
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    "no-nested-ternary": 0,
   },
 };

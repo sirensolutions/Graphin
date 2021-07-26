@@ -14,6 +14,8 @@ nav:
 
 UndoRedo 撤销回做，提供数据的存储能力，可以轻易实现 Todo，Undo 这些产品能力，从而使整个分析过程具备操作容错性。业务层也可以在此组件上添加撤销回退的特殊业务策略
 
+<code src='./demos/index.tsx'>
+
 ## 功能特性
 
 - UndoRedo 内置 state，能够监听 Graphin 的内置事件，从而将需要的数据存储起来

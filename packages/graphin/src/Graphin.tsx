@@ -21,7 +21,7 @@ import ApiController from './apis';
 import { ApisType } from './apis/types';
 
 /** types  */
-import { GraphinProps, IconLoader, GraphinData, GraphinTreeData } from './typings/type';
+import { GraphinProps, IconLoader, GraphinData, GraphinTreeData, PlainObject } from './typings/type';
 import { TREE_LAYOUTS, DEFAULT_TREE_LATOUT_OPTIONS } from './consts';
 
 import { getDefaultStyleByTheme, ThemeData } from './theme/index';
@@ -38,6 +38,8 @@ export interface GraphinState {
     apis: ApisType;
     theme: ThemeData;
     layout: LayoutController;
+    data: GraphinTreeData | GraphinData | undefined;
+    dispatch: (payload: PlainObject) => void;
   };
 }
 
@@ -152,8 +154,19 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
         apis: this.apis,
         theme: this.theme,
         layout: this.layout,
+        data: this.data,
+        dispatch: this.dispatch,
       },
     };
+  }
+
+  dispatch = (payload: PlainObject) => {
+    this.setState((prevState) => ({
+      context: {
+        ...prevState.context,
+      ...payload
+      }
+    }));
   }
 
   initData = (data: GraphinProps['data']) => {
@@ -277,6 +290,8 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
         apis: this.apis,
         theme: this.theme,
         layout: this.layout,
+        data: this.data,
+        dispatch: this.dispatch,
       },
     });
   };
@@ -365,6 +380,8 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
               apis: this.apis,
               theme: this.theme,
               layout: this.layout,
+              data: this.data,
+              dispatch: this.dispatch,
             },
           };
         },
@@ -440,6 +457,7 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
     const { modes, style } = this.props;
 
     return (
+      // @ts-ignore
       <GraphinContext.Provider value={this.state.context}>
         <div id="graphin-container">
           <div

@@ -6,7 +6,7 @@ import registerGraphinForce from './layout/inner/registerGraphinForce';
 import registerPresetLayout from './layout/inner/registerPresetLayout';
 import { registerGraphinCircle, registerGraphinLine } from './shape';
 /** export type */
-export { NodeStyle, EdgeStyle, GraphinData, GraphinTreeData, IUserEdge, IUserNode, Layout } from './typings/type';
+export { NodeStyle, EdgeStyle, GraphinData, GraphinTreeData, IUserEdge, IUserNode, Layout, PlainObject } from './typings/type';
 export { ThemeType } from './theme';
 export { GraphinContextType };
 
