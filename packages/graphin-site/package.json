@@ -1,6 +1,6 @@
 {
   "name": "graphin-site",
-  "version": "2.0.0",
+  "version": "2.0.1-siren.0",
   "description": "antv graphin site",
   "directories": {
     "doc": "docs"
@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.0.6",
-    "@antv/graphin": "*",
-    "@antv/graphin-components": "*",
+    "@antv/graphin": "^2.0.1-siren.0",
+    "@antv/graphin-components": "^2.0.1-siren.0",
     "@antv/graphin-icons": "*",
     "antd": "^4.8.4",
     "react": "^17.0.1",
