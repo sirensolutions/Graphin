@@ -1,0 +1,18 @@
+# Siren local build notes
+
+## Local builds
+
+- Remove the root node_modules directory
+- Run `yarn`
+- Run `yarn bootstrap`
+- Run `yarn graphin`
+
+## Creating a new release
+
+- Bump versions with `yarn lerna version prerelease --preid="siren" --ignore-changes --no-push --no-git-tag-version`
+- Create a branch for the release bump named after the new g6 package version, e.g. `rel-0.4.0-siren.0`
+- Commit the changes and open a pull request
+- Test the temporary packages built by the pull request
+- If the packages are fine, merge the pull request and create a tag for the release, e.g. `tag-0.4.0-siren.0`
+- Push the tag and build on Jenkins
+- Merge the pull request
