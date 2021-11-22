@@ -1,6 +1,6 @@
 {
   "name": "@antv/graphin-studio",
-  "version": "2.0.1-siren.0",
+  "version": "2.0.1-siren.1",
   "description": "An Example for Graphin",
   "main": "dist/app.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "@ant-design/icons": "^4.0.6",
     "@antv/g6": "^3.8.1",
     "@antv/graphin": "^2.0.1-siren.0",
-    "@antv/graphin-components": "^2.0.1-siren.0",
+    "@antv/graphin-components": "^2.0.1-siren.1",
     "@types/classnames": "^2.2.9",
     "antd": "^4.2.4",
     "chinese-random-name": "^1.0.0",
