@@ -83,7 +83,7 @@ module.exports = (env, argv) => {
       publicPath: './',
       filename: 'graphin.min.js',
     },
-    plugins: [new MiniCssExtractPlugin(), new BundleAnalyzerPlugin()],
+    plugins: [new MiniCssExtractPlugin()],
     externals: {
       react: 'React',
       'react-dom': 'ReactDOM',
