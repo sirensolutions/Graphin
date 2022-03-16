@@ -213,7 +213,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> & { Node: typeof Node } & {
     const inTooltip = document.querySelector('.graphin-components-tooltip:hover');
     const inShape = parentId && (parentId === itemId);
 
-    (!(inTooltip || inShape) || hoverable) && setState(preState => {
+    !(hoverable && (inTooltip || inShape)) && setState(preState => {
       return {
         ...preState,
         visible: false,
@@ -315,7 +315,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> & { Node: typeof Node } & {
         style={{ ...defaultStyle, ...style, ...positionStyle }}
       >
         {visible && (
-          <div onMouseLeave={hoverable ? e => visible && handleClose(e) : null}>
+          <div onMouseLeave={hoverable ? e => visible && handleClose(e) : undefined}>
             {hasArrow && <div className={`tooltip-arrow ${placement}`} />}
             {children}
           </div>
