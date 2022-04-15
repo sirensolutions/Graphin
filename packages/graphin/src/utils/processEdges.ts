@@ -29,8 +29,14 @@ const processEdges = (
     loop: 10,
   },
 ) => {
+  const LABEL_OFFSET_ADJUSTMENT = 0.85;
   const edgesMap: { [edgeId: string]: IUserEdge[] } = {};
-  edges.forEach(edge => {
+  edges.forEach((edge, index) => {
+    if (edge.style?.label) {
+      const yOffset = -(LABEL_OFFSET_ADJUSTMENT * poly);
+      edge.style.label.offset = [0, ((yOffset*(index + 1)) - ((yOffset/2)*index))];
+    }
+
     const { source, target } = edge;
     const edgeId = `${source}-${target}`;
     const revertEdgeId = `${target}-${source}`;
