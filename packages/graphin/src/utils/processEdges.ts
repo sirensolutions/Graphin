@@ -1,4 +1,4 @@
-import { IUserEdge } from '../typings/type';
+import { EdgeStyle, IUserEdge } from '../typings/type';
 import { deepMix } from '@antv/util';
 
 function isEven(number: number) {
@@ -9,6 +9,10 @@ function isOdd(number: number) {
   return !isEven(number);
 }
 
+const POLY_DEFAULT = 50;
+const LOOP_DEFAULT = 10;
+const LOOP_LABEL_POSITION_DEFAULT = 1;
+
 /**
  *
  * @param edges 边的集合
@@ -17,16 +21,19 @@ function isOdd(number: number) {
 const processEdges = (
   edges: IUserEdge[],
   {
-    poly = 50,
-    loop = 10,
+    poly = POLY_DEFAULT,
+    loop = LOOP_DEFAULT,
+    loopLabelPosition = LOOP_LABEL_POSITION_DEFAULT,
   }: {
     /** poly distance */
     poly: number;
     /** loop distance */
     loop: number;
+    loopLabelPosition: number;
   } = {
-    poly: 50,
-    loop: 10,
+    poly: POLY_DEFAULT,
+    loop: LOOP_DEFAULT,
+    loopLabelPosition: LOOP_LABEL_POSITION_DEFAULT,
   },
 ) => {
   const edgesMap: { [edgeId: string]: IUserEdge[] } = {};
@@ -77,19 +84,27 @@ const processEdges = (
           delete edge.revert;
         }
 
-        let keyshapeStyle = {
-          type: 'poly',
-          poly: {
-            distance: resultDistance,
-          },
-        };
-
+        let keyshapeStyle: EdgeStyle['keyshape'];
         if (isLoop) {
+          const distance = index * loop;
+
           keyshapeStyle = {
             type: 'loop',
-            // @ts-ignore
             loop: {
-              distance: index * loop,
+              distance,
+            },
+          };
+
+          if (edge.style?.label) {
+            const offsetX = 0;
+            const offsetY = -(POLY_DEFAULT * loopLabelPosition + distance * 2);
+            edge.style.label.offset = [offsetX, offsetY];
+          }
+        } else {
+          keyshapeStyle = {
+            type: 'poly',
+            poly: {
+              distance: resultDistance,
             },
           };
         }
