@@ -26,10 +26,10 @@ const processEdges = (
     loopLabelPosition = LOOP_LABEL_POSITION_DEFAULT,
   }: {
     /** poly distance */
-    poly: number;
+    poly?: number;
     /** loop distance */
-    loop: number;
-    loopLabelPosition: number;
+    loop?: number;
+    loopLabelPosition?: number;
   } = {
     poly: POLY_DEFAULT,
     loop: LOOP_DEFAULT,
