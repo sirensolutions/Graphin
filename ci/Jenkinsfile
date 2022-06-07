@@ -46,7 +46,7 @@ pipeline {
         ]) {
           sh 'curl -u"${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}" https://artifactory.siren.io/artifactory/api/npm/sirensolutions-npm-local/auth/antv > ~/.npmrc'
           script {
-            ['graphin-icons', 'graphin-components', 'graphin'].each {
+            ['graphin-icons', 'graphin', 'graphin-components'].each {
               sh "cd packages/${it} && npm run build && mv .npmrc .npmrc.bak && npm publish --registry=https://artifactory.siren.io/artifactory/api/npm/sirensolutions-npm-local && mv .npmrc.bak .npmrc && cd .."
             }
           }
