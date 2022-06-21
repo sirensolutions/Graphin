@@ -402,6 +402,15 @@ export type NodeStyleLabel = Partial<
      * @default true
      */
     visible: boolean;
+    background?: {
+      stroke?: string;
+      strokeOpacity?: number;
+      padding?: number | [number, number];
+      radius?: number;
+      fill?: string;
+      fillOpacity?: number;
+      lineWidth?: number;
+    };
   } & CommondAttrsStyle
 >;
 

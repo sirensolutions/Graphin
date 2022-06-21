@@ -1,5 +1,34 @@
-import { isArray, isNumber } from '@antv/util';
+import { LabelStyle } from '@antv/g6';
+import { deepMix, isArray, isNumber } from '@antv/util';
 import { NodeStyle } from '../typings/type';
+
+export enum ShapeItemsNames {
+  halo = 'halo',
+  keyshape = 'keyshape',
+  icon = 'icon',
+  badgesCircle = 'badges-circle',
+  badgesRect = 'badges-rect',
+  badgesText = 'badges-text',
+  badgesImage = 'badges-image',
+  label = 'label',
+  labelBackground = 'label-background',
+}
+
+export const getDefaultLabelBgStyle = (labelBgStyle?: LabelStyle['background']) => {
+  const isFillSet = !!labelBgStyle?.fill;
+  const isStrokeSet = !!labelBgStyle?.stroke;
+
+  return {
+    fill: undefined,
+    fillOpacity: Number(isFillSet),
+    stroke: undefined,
+    strokeOpacity: Number(isStrokeSet),
+    lineWidth: Number(isStrokeSet),
+    padding: [0, 0],
+    radius: 0,
+  };
+};
+
 /**
  *
  * @param shapes 元素组合的shape集合
@@ -19,6 +48,17 @@ export const setStatusStyle = (shapes: any, statusStyle: any, parseAttr: (style:
       const style = statusStyle[itemShapeName];
       if (style) {
         const { animate, visible, ...otherAttrs } = parseAttr(statusStyle, itemShapeName);
+
+        if (itemShapeName === ShapeItemsNames.label) {
+          // if shapeItem is label and there is label background specified on it
+          // dedicated shapeItem should be updated with specified styles
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const labelBgShapeItem = shapes.find((shape: any) => shape.cfg.name === ShapeItemsNames.labelBackground);
+          // if no label background set, use default definition
+          // e.g., to return to initial styles if there was only default definiton for label background
+          labelBgShapeItem.attr(deepMix(getDefaultLabelBgStyle(style.background), style.background));
+        }
+
         // eslint-disable-next-line no-empty
         if (!shapeItem.attrs.img) {
           shapeItem.attr(otherAttrs);

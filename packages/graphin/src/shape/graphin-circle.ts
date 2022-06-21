@@ -4,7 +4,15 @@ import G6, { INode } from '@antv/g6';
 import { deepMix, isArray, isNumber } from '@antv/util';
 import { getDefaultStyleByTheme } from '../theme';
 import { IUserNode, NodeStyle, NodeStyleBadge } from '../typings/type';
-import { convertSizeToWH, getBadgePosition, getLabelXYByPosition, removeDumpAttrs, setStatusStyle } from './utils';
+import {
+  convertSizeToWH,
+  getBadgePosition,
+  getDefaultLabelBgStyle,
+  getLabelXYByPosition,
+  removeDumpAttrs,
+  setStatusStyle,
+  ShapeItemsNames,
+} from './utils';
 
 function getRadiusBySize(size: number | number[] | undefined) {
   let r;
@@ -61,7 +69,7 @@ const parseHalo = (style: NodeStyle) => {
     ...otherAttrs,
   };
   return {
-    name: 'halo',
+    name: ShapeItemsNames.halo,
     visible: visible !== false,
     attrs: removeDumpAttrs(attrs),
   };
@@ -85,7 +93,7 @@ const parseKeyshape = (style: NodeStyle) => {
     ...otherAttrs,
   };
   return {
-    name: 'keyshape',
+    name: ShapeItemsNames.keyshape,
     visible: visible !== false,
     attrs: removeDumpAttrs(attrs),
   };
@@ -111,7 +119,7 @@ const parseLabel = (style: NodeStyle) => {
     ...otherAttrs,
   };
   return {
-    name: 'label',
+    name: ShapeItemsNames.label,
     visible: visible !== false,
     attrs: removeDumpAttrs(attrs),
   };
@@ -139,7 +147,7 @@ const parseIcon = (style: NodeStyle) => {
   const [width, height] = convertSizeToWH(size);
 
   const params = {
-    name: 'icon',
+    name: ShapeItemsNames.icon,
     visible: visible !== false,
     capture: false,
   };
@@ -231,7 +239,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         x: realX,
         y: realY,
       },
-      name: 'badges-circle',
+      name: ShapeItemsNames.badgesCircle,
     };
     if (id) {
       shape.id = id;
@@ -264,7 +272,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         y: realY,
         radius: (height + padding * 2) / 3,
       },
-      name: 'badges-rect',
+      name: ShapeItemsNames.badgesRect,
     };
     if (id) {
       shape.id = id;
@@ -285,7 +293,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         fill: color,
       },
       capture: false,
-      name: 'badges-text',
+      name: ShapeItemsNames.badgesText,
     });
   } else if (type === 'image') {
     group.addShape('image', {
@@ -297,10 +305,32 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         img: badgeValue,
       },
       capture: false,
-      name: 'badges-image',
+      name: ShapeItemsNames.badgesImage,
     });
   }
 };
+
+const getLabelBgStyleByPosition = (cfgLabelStyle?: any) => {
+  const compiledLabelBgStyle = deepMix(getDefaultLabelBgStyle(cfgLabelStyle.background), cfgLabelStyle.background);
+
+  const padding = Array.isArray(compiledLabelBgStyle.padding)
+    ? { y: compiledLabelBgStyle.padding[0], x: compiledLabelBgStyle.padding[1] }
+    : { y: compiledLabelBgStyle.padding, x: compiledLabelBgStyle.padding };
+  const fontDimensions = G6.Util.getTextSize(cfgLabelStyle.text, cfgLabelStyle.fontSize);
+  const backgroundWidth = fontDimensions[0] + padding.x;
+  const backgroundHeight = fontDimensions[1] + padding.y;
+
+  const style = {
+    ...compiledLabelBgStyle,
+    x: 0 - backgroundWidth / 2,
+    y: cfgLabelStyle.y - padding.y / 2,
+    width: backgroundWidth,
+    height: backgroundHeight,
+  };
+
+  return style;
+};
+
 export default () => {
   G6.registerNode('graphin-circle', {
     options: {
@@ -326,9 +356,18 @@ export default () => {
       // keyshape 主容器
       const keyShape = group.addShape('circle', parseKeyshape(style));
 
+      const parsedLabel = parseLabel(style);
+
+      // apply label background by default (if no initial background set on styles, use transparent one)
+      // it will allow to use label background on states without specifying it on intial styles
+      group.addShape('rect', {
+        attrs: getLabelBgStyleByPosition(parsedLabel.attrs),
+        name: ShapeItemsNames.labelBackground,
+      });
+
       // 文本
 
-      group.addShape('text', parseLabel(style));
+      group.addShape('text', parsedLabel);
 
       // keyShape 中间的 icon
 
