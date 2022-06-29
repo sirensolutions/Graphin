@@ -35,7 +35,17 @@ export interface TooltipProps {
   /**
    * @description Tooltip 的位置
    */
-  placement?: 'auto'| 'center' | 'top' | 'bottom' | 'right' | 'left' | 'top-left' | 'top-right' | 'bottom-left'| 'bottom-right';
+  placement?:
+    | 'auto'
+    | 'center'
+    | 'top'
+    | 'bottom'
+    | 'right'
+    | 'left'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-right';
   /**
    * @description 是否展示小箭头
    * @description.en-US display arrow
@@ -66,8 +76,16 @@ const Tooltip: React.FunctionComponent<TooltipProps> = props => {
     console.log(error);
   }
   const padding = 12;
-  const containerPosition = getContainerStyles({ graph, placement, nodeSize: nodeSize + padding, x, y, bindType, visible });
-  const positionStyle: React.CSSProperties = {
+  const containerPosition = getContainerStyles({
+    graph,
+    placement,
+    nodeSize: nodeSize + padding,
+    x,
+    y,
+    bindType,
+    visible,
+  });
+  const positionStyle = {
     position: 'absolute',
     ...containerPosition,
   };

@@ -111,7 +111,7 @@ const processKeyshape = (cfg: EdgeConfig, style: EdgeStyle) => {
       ...loop,
     };
     const R = nodeSize / 2;
-    const dy = Math.sqrt(R ** 2 - dx ** 2);
+    const dy = Math.sqrt(Math.max(R ** 2 - dx ** 2, 0));
 
     const RX = rx || R * 2 * 0.5;
     const RY = ry || R * 2 * 0.6;
@@ -259,11 +259,17 @@ export default () => {
           };
 
           const { fill, width, height, stroke, ...otherBackgroundAttrs } = { ...defaultBackground, ...background };
+          let y = -height / 2 + offsetY;
+          if (isLoop) {
+            // 自环情况下需要特殊处理位置
+            y = -(height / 2 + offsetY + fontSize + nodeSize * 1 + (keyShapeStyle?.loop?.distance || 0) * 2);
+          }
+
           const labelBackgroundShape = (group as IGroup).addShape('rect', {
             attrs: {
               id: 'label-background',
               x: -width / 2 + offsetX,
-              y: -height / 2 + offsetY,
+              y,
               width,
               height,
               fill,
@@ -281,12 +287,18 @@ export default () => {
 
         /** 设置标签的文本 */
         let y = offsetY - fontSize / 2;
-        if (isLoop) {
-          y = offsetY - nodeSize * 1.6 - (keyShapeStyle?.loop?.distance || 0) * 2;
-        }
         if (hasBackground) {
           y = offsetY + fontSize / 2;
         }
+        // 自环情况下特殊处理
+        if (isLoop) {
+          if (hasBackground) {
+            y = -(offsetY + fontSize / 2 + nodeSize * 1 + (keyShapeStyle?.loop?.distance || 0) * 2);
+          } else {
+            y = -(offsetY + fontSize + nodeSize * 1 + (keyShapeStyle?.loop?.distance || 0) * 2);
+          }
+        }
+
         const labelShape = (group as IGroup).addShape('text', {
           attrs: {
             id: 'label',
