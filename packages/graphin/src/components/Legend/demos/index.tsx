@@ -1,5 +1,6 @@
-import type { LegendChildrenProps, OptionType } from '@antv/graphin';
-import Graphin, { Components, Utils } from '@antv/graphin';
+import Graphin, { Utils } from '@antv/graphin';
+import { LegendChildrenProps, OptionType } from '../typing';
+import Components from '../../index';
 import iconsLoader from '@antv/graphin-icons';
 import * as React from 'react';
 
