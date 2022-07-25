@@ -1,6 +1,6 @@
 {
   "name": "@antv/graphin-graphscope",
-  "version": "1.0.3-siren.7",
+  "version": "1.0.3-siren.8",
   "description": "An Example for GraphScope",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.4.0",
-    "@antv/graphin": "2.6.7-siren.3",
-    "@antv/graphin-components": "2.4.0-siren.8",
-    "@antv/graphin-icons": "1.0.0-siren.8",
+    "@antv/graphin": "2.6.7-siren.5",
+    "@antv/graphin-components": "2.4.0-siren.9",
+    "@antv/graphin-icons": "1.0.0-siren.9",
     "antd": "^4.10.3",
     "classnames": "^2.2.6",
     "re-resizable": "^6.9.0",

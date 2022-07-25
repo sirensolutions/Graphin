@@ -186,6 +186,8 @@ export interface GraphinProps {
   [key: string]: any;
 
   // children: React.ReactChildren;
+
+  rtl?: boolean;
 }
 
 export interface IUserNode extends BaseNode, Partial<RestNode>, UserProperties {}

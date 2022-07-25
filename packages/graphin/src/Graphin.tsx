@@ -246,6 +246,9 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
     /** 装载数据 */
     this.graph.data(this.data as GraphData | TreeGraphData);
 
+    /** Setting the text direction */
+    this.setTextDirection();
+
     /** 渲染 */
     this.graph.render();
 
@@ -276,6 +279,12 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
       },
     });
   };
+
+  setTextDirection() {
+    const { rtl } = this.props;
+    const direction = rtl ? 'rtl' : 'ltr';
+    this.graph.get('canvas').get('el').setAttribute('dir', direction);
+  }
 
   updateLayout = () => {
     this.layout.changeLayout();
@@ -325,7 +334,7 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
     const isOptionsChange = this.shouldUpdate(prevProps, 'options');
     const isThemeChange = this.shouldUpdate(prevProps, 'theme');
     // console.timeEnd('did-update');
-    const { data, layoutCache, layout } = this.props;
+    const { data, layoutCache, layout, rtl } = this.props;
     this.layoutCache = layoutCache;
     // const isGraphTypeChange = (prevProps.data as GraphinTreeData).children !== (data as GraphinTreeData).children;
 
@@ -344,6 +353,11 @@ class Graphin extends React.PureComponent<GraphinProps, GraphinState> {
     /** 配置变化 */
     if (isOptionsChange) {
       // this.updateOptions();
+
+      if (prevProps.rtl !== rtl) {
+        this.setTextDirection();
+        this.graph.render();
+      }
     }
 
     let newDragNodes: IUserNode[];
