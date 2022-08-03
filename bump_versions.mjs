@@ -7,7 +7,7 @@ import {
   writeFileSync
 } from 'fs';
 import { join } from 'path';
-import * as semver from 'semver';
+import semver from 'semver';
 
 const newVersions = {};
 
