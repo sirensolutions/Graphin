@@ -63,7 +63,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = props => {
   let nodeSize = 40;
 
   try {
-    if (item) {
+    if (item && !item.destroyed) {
       const { type } = item.getModel();
       if (type === 'graphin-cirle') {
         const { style } = item.getModel();
