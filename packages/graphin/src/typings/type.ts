@@ -330,7 +330,7 @@ export interface EdgeStyle {
     } & CommondAttrsStyle
   >;
   /** 状态样式 */
-  status: Partial<{
+  status?: Partial<{
     selected: Partial<EdgeStyle>;
     hover: Partial<EdgeStyle>;
     disabled: Partial<EdgeStyle>;
