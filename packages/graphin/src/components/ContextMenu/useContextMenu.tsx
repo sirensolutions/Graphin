@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
 import { GraphinContext, IG6GraphEvent } from '../../index';
 
+export type BindType = 'node' | 'edge' | 'canvas';
+
+const BIND_TYPES: BindType[] = ['node', 'edge', 'canvas']; 
+
 export interface ContextMenuProps {
-  bindType?: 'node' | 'edge' | 'canvas';
+  bindType?: BindType;
   container: React.RefObject<HTMLDivElement>;
 }
 
@@ -107,6 +111,12 @@ const useContextMenu = (props: ContextMenuProps) => {
     };
     // @ts-ignore
     graph.on(`${bindType}:contextmenu`, handleShow);
+    BIND_TYPES.forEach(type => {
+      if (type !== bindType) {
+        graph.on(`${type}:contextmenu`, handleClose);   
+      }
+    });
+    
     graph.on('canvas:click', handleClose);
     graph.on('canvas:drag', handleClose);
     graph.on('wheelzoom', handleClose);
@@ -117,6 +127,11 @@ const useContextMenu = (props: ContextMenuProps) => {
 
     return () => {
       graph.off(`${bindType}:contextmenu`, handleShow);
+      BIND_TYPES.forEach(type => {
+        if (type !== bindType) {
+          graph.off(`${type}:contextmenu`, handleClose);   
+        }
+      });
       graph.off('canvas:click', handleClose);
       graph.off('canvas:drag', handleClose);
       graph.off('wheelzoom', handleClose);
