@@ -1,5 +1,5 @@
 import Graphin, { Utils } from '@antv/graphin';
-import { LegendChildrenProps, OptionType } from '../typing';
+import type { LegendChildrenProps, LegendOptionType } from '@antv/graphin';
 import Components from '../../index';
 import iconsLoader from '@antv/graphin-icons';
 import * as React from 'react';
@@ -44,7 +44,7 @@ data.nodes.forEach((node, index) => {
 });
 
 const Demo = () => {
-  const onChange = (checkedValue: OptionType, options: OptionType[]) => {
+  const onChange = (checkedValue: LegendOptionType, options: LegendOptionType[]) => {
     console.log(checkedValue, options);
   };
 
