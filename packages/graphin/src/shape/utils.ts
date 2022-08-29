@@ -77,7 +77,7 @@ export const setStatusStyle = (shapes: any, statusStyle: any, parseAttr: (style:
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-export function removeDumpAttrs<T>(attrs: T): T {
+export function removeDumpAttrs<T extends Record<string, unknown>>(attrs: T): T {
   Object.keys(attrs).forEach(key => {
     // @ts-ignore
     if (attrs[key] === undefined) {
