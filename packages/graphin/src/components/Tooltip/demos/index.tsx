@@ -1,4 +1,3 @@
-import { CaretRightOutlined } from '@ant-design/icons';
 import type { TooltipValue } from '@antv/graphin';
 import Graphin, { Components, Utils } from '@antv/graphin';
 import { Collapse, Input, Radio, Switch } from 'antd';
@@ -30,7 +29,7 @@ const TooltipDemo: React.FunctionComponent = () => {
       <Collapse
         style={{ width: '320px', position: 'absolute', top: '0px', left: '0px', zIndex: 999 }}
         defaultActiveKey={['placement', 'arrow', 'style']}
-        expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+        expandIcon={({ isActive }) => <div />}
         className="site-collapse-custom-collapse"
       >
         <Panel header="设置placement" key="placement">
