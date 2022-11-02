@@ -126,11 +126,11 @@ export interface GraphinProps {
     type?: string;
     style: ComboStyle;
     labelCfg?: {
-      position?: 'center' | 'top' | 'left' | 'right' | 'bottom',
-      refX?: number,
-      refY?: number,
-      style?: ShapeStyle
-    },
+      position?: 'center' | 'top' | 'left' | 'right' | 'bottom';
+      refX?: number;
+      refY?: number;
+      style?: ShapeStyle;
+    };
     [key: string]: any;
   }>;
 
