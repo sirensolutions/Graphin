@@ -13,8 +13,12 @@ export interface State {
 export interface Props {
   bindType: 'node' | 'edge';
   container: React.RefObject<HTMLDivElement>;
+  delay?: {
+    show?: number;
+    hide?: number;
+  }
 }
-//let timer.current: number | undefined;
+// let timer.current: number | undefined;
 
 const useTooltip = (props: Props) => {
   const { bindType = 'node', container } = props;
@@ -54,15 +58,17 @@ const useTooltip = (props: Props) => {
     }
 
     /** 设置变量 */
-    setState(preState => {
-      return {
-        ...preState,
-        visible: true,
-        item: e.item,
-        x,
-        y,
-      };
-    });
+    timer.current = window.setTimeout(() => {
+      setState(preState => {
+        return {
+          ...preState,
+          visible: true,
+          item: e.item,
+          x,
+          y,
+        };
+      });
+    }, props?.delay?.show || 0);
   };
   const handleClose = () => {
     if (timer.current) {
@@ -78,7 +84,7 @@ const useTooltip = (props: Props) => {
           y: 0,
         };
       });
-    }, 200);
+    }, props?.delay?.hide || 200);
   };
   const handleDragStart = () => {
     setState({

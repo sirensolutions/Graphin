@@ -36,28 +36,35 @@ export interface TooltipProps {
    * @description Tooltip 的位置
    */
   placement?:
-    | 'auto'
-    | 'center'
-    | 'top'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-left'
-    | 'top-right'
-    | 'bottom-left'
-    | 'bottom-right';
+  | 'auto'
+  | 'center'
+  | 'top'
+  | 'bottom'
+  | 'right'
+  | 'left'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right';
   /**
    * @description 是否展示小箭头
    * @description.en-US display arrow
    */
   hasArrow?: boolean;
+  /**
+   * @description set tooltip delay (ms)
+   */
+  delay?: {
+    show?: number;
+    hide?: number;
+  }
 }
 
 const container = React.createRef<HTMLDivElement>();
 
 const Tooltip: React.FunctionComponent<TooltipProps> = props => {
-  const { children, bindType = 'node', style, placement = 'top', hasArrow } = props;
-  const { x, y, visible, item } = useTooltip({ bindType, container });
+  const { children, bindType = 'node', style, placement = 'top', hasArrow, delay } = props;
+  const { x, y, visible, item } = useTooltip({ bindType, container, delay });
   const { graph } = React.useContext(GraphinContext);
 
   let nodeSize = 40;
