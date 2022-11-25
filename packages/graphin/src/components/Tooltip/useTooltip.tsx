@@ -13,9 +13,9 @@ export interface State {
 export interface Props {
   bindType: 'node' | 'edge';
   container: React.RefObject<HTMLDivElement>;
-  delay?: {
-    show?: number;
-    hide?: number;
+  delay: {
+    show: number;
+    hide: number;
   }
 }
 //let timer.current: number | undefined;
@@ -68,7 +68,7 @@ const useTooltip = (props: Props) => {
           y,
         };
       });
-    }, props?.delay?.show || 0);
+    }, props?.delay?.show);
   };
   const handleClose = () => {
     if (timer.current) {
@@ -84,7 +84,7 @@ const useTooltip = (props: Props) => {
           y: 0,
         };
       });
-    }, props?.delay?.hide || 200);
+    }, props?.delay?.hide);
   };
   const handleDragStart = () => {
     setState({
