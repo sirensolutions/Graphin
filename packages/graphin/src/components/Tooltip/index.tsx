@@ -55,8 +55,8 @@ export interface TooltipProps {
    * @description set tooltip delay (ms)
    */
   delay?: {
-    show?: number;
-    hide?: number;
+    show: number;
+    hide: number;
   }
 }
 
