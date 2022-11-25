@@ -18,7 +18,7 @@ export interface Props {
     hide?: number;
   }
 }
-// let timer.current: number | undefined;
+//let timer.current: number | undefined;
 
 const useTooltip = (props: Props) => {
   const { bindType = 'node', container } = props;
