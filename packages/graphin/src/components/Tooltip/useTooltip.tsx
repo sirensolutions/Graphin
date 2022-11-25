@@ -68,7 +68,7 @@ const useTooltip = (props: Props) => {
           y,
         };
       });
-    }, props?.delay?.show);
+    }, props.delay.show);
   };
   const handleClose = () => {
     if (timer.current) {
@@ -84,7 +84,7 @@ const useTooltip = (props: Props) => {
           y: 0,
         };
       });
-    }, props?.delay?.hide);
+    }, props.delay.hide);
   };
   const handleDragStart = () => {
     setState({
