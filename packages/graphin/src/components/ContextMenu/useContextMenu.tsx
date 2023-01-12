@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { GraphinContext, IG6GraphEvent } from '../../index';
 
-export type BindType = 'node' | 'edge' | 'canvas';
+export type BindType = 'node' | 'edge' | 'canvas' | 'combo';
 
-const BIND_TYPES: BindType[] = ['node', 'edge', 'canvas']; 
+const BIND_TYPES: BindType[] = ['node', 'edge', 'combo', 'canvas']; 
 
 export interface ContextMenuProps {
   bindType?: BindType;
