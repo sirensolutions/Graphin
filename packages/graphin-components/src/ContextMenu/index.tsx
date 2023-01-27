@@ -55,7 +55,7 @@ const ContextMenu: React.FunctionComponent<ContextMenuProps> & { Menu: typeof Me
         ...preState,
         visible: true,
         x: e.canvasX,
-        y: e.canvasY,
+        y: e.canvasY
       };
     });
 
