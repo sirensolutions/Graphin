@@ -53,10 +53,12 @@ export const setStatusStyle = (shapes: any, statusStyle: any, parseAttr: (style:
           // if shapeItem is label and there is label background specified on it
           // dedicated shapeItem should be updated with specified styles
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const labelBgShapeItem = shapes.find((shape: any) => shape.cfg.name === ShapeItemsNames.labelBackground);
-          // if no label background set, use default definition
-          // e.g., to return to initial styles if there was only default definiton for label background
-          labelBgShapeItem.attr(deepMix(getDefaultLabelBgStyle(style.background), style.background));
+          const labelBgShape = shapes.find((shape: any) => shape.cfg.name === ShapeItemsNames.labelBackground);
+          if (labelBgShape) {
+            // if no label background set, use default definition
+            // e.g., to return to initial styles if there was only default definiton for label background
+            labelBgShape.attr(deepMix(getDefaultLabelBgStyle(style.background), style.background));
+          }
         }
 
         // eslint-disable-next-line no-empty
