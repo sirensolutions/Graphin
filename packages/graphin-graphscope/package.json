@@ -1,6 +1,6 @@
 {
   "name": "@antv/graphin-graphscope",
-  "version": "1.0.3-siren.35",
+  "version": "1.0.5-siren.0",
   "description": "An Example for GraphScope",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,10 +12,10 @@
     "clean": "rimraf es esm lib dist"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.3.0",
-    "@antv/graphin": "2.7.16-siren.3",
-    "@antv/graphin-components": "2.4.0-siren.37",
-    "@antv/graphin-icons": "1.0.0-siren.37",
+    "@ant-design/icons": "^4.4.0",
+    "@antv/graphin": "2.7.18-siren.0",
+    "@antv/graphin-components": "2.4.1-siren.0",
+    "@antv/graphin-icons": "1.0.0-siren.38",
     "antd": "^4.10.3",
     "classnames": "^2.2.6",
     "re-resizable": "^6.9.0",

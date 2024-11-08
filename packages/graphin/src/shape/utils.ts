@@ -1,5 +1,5 @@
+import { deepMix } from '@antv/util';
 import { LabelStyle } from '@antv/g6';
-import { deepMix, isArray, isNumber } from '@antv/util';
 import { NodeStyle } from '../typings/type';
 
 export enum ShapeItemsNames {
@@ -82,7 +82,8 @@ export const setStatusStyle = (shapes: any, statusStyle: any, parseAttr: (style:
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-export function removeDumpAttrs<T extends Record<string, unknown>>(attrs: T): T {
+export function removeDumpAttrs<T>(attrs: T): T {
+  // @ts-ignore
   Object.keys(attrs).forEach(key => {
     // @ts-ignore
     if (attrs[key] === undefined) {
@@ -101,10 +102,10 @@ export const convertSizeToWH = (size: number | number[] | undefined) => {
   if (!size) return [0, 0];
   let width = 0;
   let height = 0;
-  if (isNumber(size)) {
+  if (typeof size === 'number') {
     width = size;
     height = size;
-  } else if (isArray(size)) {
+  } else if (Array.isArray(size)) {
     if (size.length === 1) {
       const [w] = size;
       width = w;

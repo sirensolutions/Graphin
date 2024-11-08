@@ -1,6 +1,6 @@
 {
   "name": "@antv/graphin",
-  "version": "2.7.16-siren.3",
+  "version": "2.7.26-siren.0",
   "description": "the react toolkit for graph analysis based on g6",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -14,9 +14,11 @@
     "start": "npm run clean && father build --watch",
     "build": "npm run clean && father build && npm run build:umd",
     "build:umd": "node --max_old_space_size=8192 ./node_modules/webpack/bin/webpack.js  --mode production  -c ./webpack.config.js",
+    "analyze": "cross-env ANALYZE=true npm run build:umd",
     "test": "jest",
     "prettier": "prettier --write ./src/**/**/**/*.js",
-    "clean": "rimraf es esm lib dist"
+    "clean": "rimraf es esm lib dist",
+    "postpublish": "tnpm sync @antv/graphin"
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,6 @@
     "directory": "packages/graphin"
   },
   "devDependencies": {
-    "@types/node": "latest",
     "@antv/g-base": "^0.5.9",
     "@antv/hierarchy": "^0.6.6",
     "@babel/core": "^7.16.0",
@@ -32,7 +33,8 @@
     "@testing-library/react": "^12.1.2",
     "@types/d3-quadtree": "^3.0.2",
     "@types/jest": "^27.0.3",
-    "@types/lodash-es": "^4.17.5",
+    "@types/lodash-es": "^4.17.7",
+    "@types/node": "latest",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "eventemitter3": "^4.0.0",
@@ -61,15 +63,14 @@
   "author": "AntV",
   "license": "MIT",
   "dependencies": {
-    "@antv/util": "^2.0.10",
-    "@types/lodash.clonedeep": "^4.5.6",
+    "@antv/g6": "4.8.24-siren.1",
     "d3-quadtree": "^3.0.1",
-    "lodash.clonedeep": "^4.5.0",
-    "@antv/g6": "4.8.24-siren.0"
+    "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "lodash-es": ">=4.17.21"
   },
   "publishConfig": {
     "access": "public"

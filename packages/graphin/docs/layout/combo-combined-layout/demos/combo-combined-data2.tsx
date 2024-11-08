@@ -1,41 +1,41 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react';
+import G6 from '@antv/g6';
 import Graphin, { Behaviors } from '@antv/graphin';
 import { ContextMenu } from '@antv/graphin-components';
-import G6 from '@antv/g6';
-import cloneDeep from '../../../../lib/utils/cloneDeep';
+import { cloneDeep } from 'lodash-es';
+import React, { useEffect, useState } from 'react';
 
 const { DragCombo } = Behaviors;
 const { Menu } = ContextMenu;
 
 const COMBO_STATE_STYLES = {
-  'selected': {
+  selected: {
     lineWidth: 3,
     'text-shape': {
-      fontWeight: 500
-    }
+      fontWeight: 500,
+    },
   },
-  'active': {
+  active: {
     lineWidth: 3,
     'text-shape': {
-      fontWeight: 500
-    }
+      fontWeight: 500,
+    },
   },
-  'hightlight': {
+  hightlight: {
     lineWidth: 3,
     'text-shape': {
-      fontWeight: 500
-    }
+      fontWeight: 500,
+    },
   },
-  'inactive': {
+  inactive: {
     lineWidth: 1,
     fillOpacity: 0,
     strokeOpacity: 0.2,
     'text-shape': {
-      opacity: 0.3
-    }
-  }
-}
+      opacity: 0.3,
+    },
+  },
+};
 
 const colors = [
   '#5F95FF',
@@ -48,7 +48,7 @@ const colors = [
   '#F6903D',
   '#008685',
   '#F08BB4',
-]
+];
 
 /** 数据 */
 const data = {
@@ -501,7 +501,7 @@ const data = {
       parentId: 'b',
     },
   ],
-}
+};
 
 let comboPositionCache = {};
 
@@ -509,8 +509,8 @@ const defaultLayout = {
   type: 'comboCombined',
   animation: false,
   comboPadding: 120,
-  innerLayout: new G6.Layout['concentric']({ sortBy: 'degree' }),
-  outerLayout: new G6.Layout['gForce']({
+  innerLayout: new G6.Layout.concentric({ sortBy: 'degree' }),
+  outerLayout: new G6.Layout.gForce({
     preventOverlap: true,
     animate: false, // for gForce and fruchterman
     gravity: 1,
@@ -521,8 +521,8 @@ const defaultLayout = {
       return Math.min(nodeSize * 1.5 + 150, 700);
     },
   }),
-  refresh: 0
-}
+  refresh: 0,
+};
 
 const Demo = () => {
   const graphinRef = React.createRef();
@@ -556,19 +556,19 @@ const Demo = () => {
     } else if (action === 'add-combo') {
       addCombo(item.getModel());
     }
-  }, [comboAction])
+  }, [comboAction]);
 
   const processData = () => {
     const map = {};
     const cMap = {};
     const nMap = {};
-    data.nodes.forEach(node => nMap[node.id] = node);
-    data.combos.forEach(combo => cMap[combo.id] = combo);
+    data.nodes.forEach(node => (nMap[node.id] = node));
+    data.combos.forEach(combo => (cMap[combo.id] = combo));
     const gData = {
       nodes: cloneDeep(data.nodes),
       combos: cloneDeep(data.combos),
-      edges: []
-    }
+      edges: [],
+    };
 
     gData.edges = processEdges(gData, nMap, []);
 
@@ -594,17 +594,17 @@ const Demo = () => {
       cMap[comboId].style = {
         fill: color,
         stroke: color,
-        fillOpacity: 0.2
-      }
+        fillOpacity: 0.2,
+      };
       map[comboId].forEach(child => {
         child.color = color;
         child.style = {
           keyshape: {
             fill: color,
             stroke: color,
-            fillOpacity: 0.2
-          }
-        }
+            fillOpacity: 0.2,
+          },
+        };
       });
     });
 
@@ -613,9 +613,9 @@ const Demo = () => {
     setNodeMap(nMap);
 
     return gData;
-  }
+  };
 
-  const bindGraphEvents = (gData) => {
+  const bindGraphEvents = gData => {
     const { graph } = graphinRef.current;
     if (graph && !graph.destroyed) {
       // 双击 combo 解散，恢复相关的边（包括内部元素到其他 combo 的边）
@@ -623,7 +623,7 @@ const Demo = () => {
         setComboAction({
           item: e.item,
           delay: 200,
-          action: 'uncombo'
+          action: 'uncombo',
         });
       });
       // 接收从 contextmenu 传过来的合并事件
@@ -631,11 +631,11 @@ const Demo = () => {
         const { currentItem } = e;
         setComboAction({
           item: currentItem,
-          action: 'add-combo'
+          action: 'add-combo',
         });
       });
     }
-  }
+  };
 
   const uncombo = (combo, delay = 0) => {
     const { graph } = graphinRef.current;
@@ -643,7 +643,7 @@ const Demo = () => {
     const comboChildren = combo.getChildren();
     const children = comboChildren.nodes.concat(comboChildren.combos);
     const childNodeIds = children.map(child => child.getID());
-    
+
     // 更新数据之前的动画：combo 缩小+渐隐动画
     combo.getKeyShape().animate(
       { r: 1, opacity: 0 },
@@ -651,15 +651,15 @@ const Demo = () => {
         duration: 300,
         delay,
         easing: 'easeCubic',
-      }
+      },
     );
     const newUncomboedList = [...uncomboedList, comboId];
     // 在重新布局前，为节点增加 mass 等参数，保证重新布局的稳定
     const newData = {
       nodes: graphData.nodes,
       combos: graphData.combos.filter(combo => combo.id !== comboId),
-      edges: []
-    }
+      edges: [],
+    };
     newData.edges = processEdges(newData, nodeMap, newUncomboedList);
     newData.nodes.forEach(node => {
       if (childNodeIds.includes(node.id)) {
@@ -683,30 +683,30 @@ const Demo = () => {
       }
       comboPositionCache[model.id] = {
         x: model.x,
-        y: model.y
-      }
+        y: model.y,
+      };
     });
     // 触发重新布局
     setTimeout(() => {
       setGraphData(newData);
       setLayout({
         ...defaultLayout,
-        refresh: Math.random()
-      })
+        refresh: Math.random(),
+      });
       setUncomboedList(newUncomboedList);
     }, 300 + delay);
-  }
+  };
 
-  const addCombo = (nodeModel) => {
+  const addCombo = nodeModel => {
     const { graph } = graphinRef.current;
     // 找到该节点原先所在 combo id
-    const comboId = nodeModel.comboId;
+    const { comboId } = nodeModel;
     if (!comboId) return;
     // 计算该 combo 子元素的平均中心
     const meanCenter = { x: 0, y: 0, count: 0 };
     comboChildMap[comboId].forEach(child => {
-      meanCenter.x += (child.x || 0);
-      meanCenter.y += (child.y || 0);
+      meanCenter.x += child.x || 0;
+      meanCenter.y += child.y || 0;
       meanCenter.count++;
     });
     meanCenter.x /= meanCenter.count;
@@ -719,8 +719,8 @@ const Demo = () => {
     const newData = {
       nodes: graphData.nodes,
       combos: graphData.combos,
-      edges: []
-    }
+      edges: [],
+    };
     // 新增 combo
     const newCombo = {
       id: comboId,
@@ -732,8 +732,8 @@ const Demo = () => {
       style: {
         fill: nodeModel.color,
         stroke: nodeModel.color,
-        fillOpacity: 0.2
-      }
+        fillOpacity: 0.2,
+      },
     };
     comboMap[comboId] = newCombo;
     newData.combos.push(newCombo);
@@ -751,14 +751,14 @@ const Demo = () => {
     setGraphData(newData);
     setLayout({
       ...defaultLayout,
-      refresh: Math.random()
+      refresh: Math.random(),
     });
-  }
+  };
 
   const processEdges = (currentData, nMap, filterList = []) => {
     const edges = [];
     const currentDataMap = {};
-    currentData.nodes.concat(currentData.combos).forEach(model => currentDataMap[model.id] = model);
+    currentData.nodes.concat(currentData.combos).forEach(model => (currentDataMap[model.id] = model));
     const edgeMap = {};
     data.edges.forEach(edge => {
       let sourceId = edge.source;
@@ -792,22 +792,21 @@ const Demo = () => {
             },
             style: {
               lineWidth: 1,
-              lineDash: [15, 15]
-            }
+              lineDash: [15, 15],
+            },
           };
           edgeMap[key] = currentEdge;
         } else {
-          edgeMap[key].style.lineWidth ++;
+          edgeMap[key].style.lineWidth++;
         }
       }
       // 若起点、终点都存在于数据中，则加入该边
       if (currentDataMap[currentEdge.source] && currentDataMap[currentEdge.target]) {
         edges.push(currentEdge);
       }
-      
     });
     return edges;
-  }
+  };
 
   return (
     <div className="App">
@@ -818,14 +817,14 @@ const Demo = () => {
         groupByTypes={false}
         defaultCombo={{
           style: {
-            opacity: 0.6
-          }
+            opacity: 0.6,
+          },
         }}
         comboStateStyles={COMBO_STATE_STYLES}
-        animate={true}
+        animate
         animateCfg={{
           duration: 800,
-          easing: 'easeCubic'
+          easing: 'easeCubic',
         }}
       >
         <DragCombo />

@@ -18,7 +18,9 @@ const ClickElement: React.FC<ClickElementProps> = ({ nodeClick }) => {
       }
     });
 
-    return () => graph.off('node:click') as any;
+    return () => {
+      graph.off('node:click');
+    };
   }, []);
 
   return null;

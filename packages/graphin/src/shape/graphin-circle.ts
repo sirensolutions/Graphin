@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IGroup, ShapeCfg } from '@antv/g-base';
 import G6, { INode } from '@antv/g6';
-import { deepMix, isArray, isNumber } from '@antv/util';
+import { merge } from 'lodash-es';
 import { getDefaultStyleByTheme } from '../theme';
 import { IUserNode, NodeStyle, NodeStyleBadge } from '../typings/type';
 import {
@@ -16,9 +16,9 @@ import {
 
 function getRadiusBySize(size: number | number[] | undefined) {
   let r;
-  if (isNumber(size)) {
+  if (typeof size === 'number') {
     r = size / 2;
-  } else if (isArray(size)) {
+  } else if (Array.isArray(size)) {
     r = size[0] / 2;
   }
   return r;
@@ -217,6 +217,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
     padding = 0,
     offset: inputOffset = [0, 0],
     id,
+    ...otherAttrs
   } = badge;
 
   const offset = convertSizeToWH(inputOffset);
@@ -238,6 +239,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         stroke,
         x: realX,
         y: realY,
+        ...otherAttrs,
       },
       name: ShapeItemsNames.badgesCircle,
     };
@@ -271,6 +273,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         x: realX,
         y: realY,
         radius: (height + padding * 2) / 3,
+        ...otherAttrs,
       },
       name: ShapeItemsNames.badgesRect,
     };
@@ -291,6 +294,7 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
         textBaseline: 'middle',
         fontFamily,
         fill: color,
+        ...otherAttrs,
       },
       capture: false,
       name: ShapeItemsNames.badgesText,
@@ -299,10 +303,11 @@ const drawBadge = (badge: NodeStyleBadge, group: IGroup, r: number) => {
     group.addShape('image', {
       attrs: {
         x: realX - width / 2,
-        y: realX - height / 2,
+        y: realY - height / 2,
         width,
         height,
         img: badgeValue,
+        ...otherAttrs,
       },
       capture: false,
       name: ShapeItemsNames.badgesImage,
@@ -343,7 +348,7 @@ export default () => {
 
       this.options = getStyleByTheme(_theme);
 
-      const style = deepMix({}, this.options.style, cfg.style) as NodeStyle; // getStyles({}, this.options.style, cfg.style) as NodeStyle;
+      const style = merge({}, this.options.style, cfg.style) as NodeStyle; // getStyles({}, this.options.style, cfg.style) as NodeStyle;
       /** 将初始化样式存储在model中 */
       cfg._initialStyle = { ...style };
       const { icon, badges = [], keyshape: keyShapeStyle } = style;
@@ -405,7 +410,7 @@ export default () => {
       const model = item.getModel() as any;
       const shapes = item.getContainer().get('children'); // 顺序根据 draw 时确定
 
-      const initStateStyle = deepMix({}, this.options.status, model.style.status);
+      const initStateStyle = merge({}, this.options.status, model.style.status);
       const initialStyle = item.getModel()._initialStyle as any;
       const status = item._cfg?.states || [];
 
@@ -431,7 +436,7 @@ export default () => {
     update(cfg: IUserNode, item: INode) {
       if (!cfg.style) return;
       try {
-        const style = deepMix({}, cfg._initialStyle, cfg.style) as NodeStyle; // getStyles(cfg._initialStyle, cfg.style) as NodeStyle;
+        const style = merge({}, cfg._initialStyle, cfg.style) as NodeStyle; // getStyles(cfg._initialStyle, cfg.style) as NodeStyle;
         cfg._initialStyle = { ...style };
         const { badges, keyshape } = style;
         const r = getRadiusBySize(keyshape.size) as number;

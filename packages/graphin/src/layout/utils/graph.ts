@@ -1,8 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import { Edge } from '../../layout/force/Elements';
 import { IUserNode as Node } from '../../typings/type';
-import Utils from '../../utils/index';
-import Vector from '../force/Vector';
+import { uniqBy } from 'lodash-es';
 
 const getDegree = (node: Node, edges: Edge[]) => {
   const nodeId = node.data.id;
@@ -71,9 +69,7 @@ const getRelativeNodes = (type: 'source' | 'target' | 'both', coreNode: Node, ed
       break;
   }
   // 去重
-  relativeNodes = Utils.uniqBy(relativeNodes, (a: Node, b: Node) => {
-    return a.id === b.id;
-  });
+  relativeNodes = uniqBy(relativeNodes, 'id');
   return relativeNodes;
 };
 
@@ -114,7 +110,7 @@ export const getMinDistanceNode = (sameTypeNodes: Node[]) => {
 
 // 获取节点集合的平均位置信息
 export const getAvgNodePosition = (nodes: Node[]) => {
-  let totalNodes = { x: 0, y: 0 };
+  const totalNodes = { x: 0, y: 0 };
   nodes.forEach(node => {
     totalNodes.x += node.x || 0;
     totalNodes.y += node.y || 0;

@@ -1,11 +1,8 @@
-import { deepMix } from '@antv/util';
 import { layouts } from '../layout/utils/options';
 import getComboStyleByTheme from '../theme/combo-style';
 import getEdgeStyleByTheme from '../theme/edge-style';
 import getNodeStyleByTheme from '../theme/node-style';
-import { uniqBy } from './array';
 import calcByteLength from './calcByteLength';
-import cloneDeep from './cloneDeep';
 import debug from './debug';
 import hexToRgba, { hexToRgbaToHex } from './hexToRgba';
 import mock from './mock';
@@ -14,6 +11,16 @@ import { getEnumDataMap, getEnumValue } from './processGraphData';
 import shallowEqual from './shallowEqual';
 import uuid from './uuid';
 import walk from './walk';
+
+/**
+ * @deprecated
+ */
+const deprecated = (fn: string) => {
+  return () => {
+    console.error(`⚠️ @antv/graphin Utils 不再提供 ${fn} 方法，请从 lodash 中引入！`);
+    console.error(`⚠️ @antv/graphin Utils no longer provides ${fn} methods, please use lodash instead!`);
+  };
+};
 
 export default {
   hexToRgba,
@@ -24,14 +31,14 @@ export default {
   getNodeStyleByTheme,
   getEdgeStyleByTheme,
   getComboStyleByTheme,
-  deepMix,
-  cloneDeep,
+  deepMix: deprecated('deepMix'),
+  cloneDeep: deprecated('cloneDeep'),
   uuid,
   walk,
   processEdges,
   calcByteLength,
   layouts,
-  uniqBy,
+  uniqBy: deprecated('uniqBy'),
   getEnumDataMap,
   getEnumValue,
 };
