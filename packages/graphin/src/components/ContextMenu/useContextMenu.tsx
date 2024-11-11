@@ -8,6 +8,7 @@ const BIND_TYPES: BindType[] = ['node', 'edge', 'combo', 'canvas'];
 export interface ContextMenuProps {
   bindType?: BindType;
   container: React.RefObject<HTMLDivElement>;
+  disableAutoAdjust?: boolean;
 }
 
 export interface State {
@@ -23,7 +24,7 @@ export interface State {
 }
 
 const useContextMenu = (props: ContextMenuProps) => {
-  const { bindType = 'node', container } = props;
+  const { bindType = 'node', container, disableAutoAdjust } = props;
   const { graph } = React.useContext(GraphinContext);
 
   const [state, setState] = React.useState<State>({
@@ -55,12 +56,13 @@ const useContextMenu = (props: ContextMenuProps) => {
     let y = e.canvasY + graphTop + offsetY;
 
     // when the menu is (part of) out of the canvas
-
-    if (x + bbox.width > width) {
-      x = e.canvasX - bbox.width - offsetX + graphLeft;
-    }
-    if (y + bbox.height > height) {
-      y = e.canvasY - bbox.height - offsetY + graphTop;
+    if (!disableAutoAdjust) {
+      if (x + bbox.width > width) {
+        x = e.canvasX - bbox.width - offsetX + graphLeft;
+      }
+      if (y + bbox.height > height) {
+        y = e.canvasY - bbox.height - offsetY + graphTop;
+      }
     }
 
     if (bindType === 'node') {
