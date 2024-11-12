@@ -55,8 +55,8 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@antv/util": "^2.0.10",
-    "@antv/graphin": "2.7.17-siren.0"
+    "@antv/graphin": "2.7.17-siren.0",
+    "@antv/util": "^2.0.10"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
