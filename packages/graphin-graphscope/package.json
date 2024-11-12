@@ -8,7 +8,7 @@
   "scripts": {
     "start": "father build --watch",
     "build": "npm run clean && father build",
-    "build:umd": "rimraf dist && node --max_old_space_size=8192 ./node_modules/webpack/bin/webpack.js  --env.NODE_ENV=production  -c ./webpack.config.js ",
+    "build:umd": "webpack --mode production -c ./webpack.config.js",
     "clean": "rimraf es esm lib dist"
   },
   "dependencies": {
