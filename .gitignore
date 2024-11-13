@@ -48,8 +48,6 @@ build
 package-lock.json
 
 
-# yarn-lock
-yarn.lock
 .yarn/*
 !.yarn/cache
 !.yarn/patches
