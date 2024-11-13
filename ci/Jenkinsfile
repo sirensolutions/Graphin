@@ -30,12 +30,17 @@ pipeline {
 
     stage ('Boostrap') {
       steps {
-        installNode()
         withCredentials([file(credentialsId: 'gcloud-jenkins-sirencicd', variable: 'GCLOUD_KEY_FILE')]) {
-          sh 'gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"'
-          sh 'npm run auth'
-          sh 'yarn'
-          sh 'yarn bootstrap:ci'
+          sh("""
+            set +x
+            gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"
+            . ~/.profile
+            nvm install & nvm use
+            npm run auth
+            yarn
+            yarn bootstrap:ci
+            """
+          )
         }
       }
     }
