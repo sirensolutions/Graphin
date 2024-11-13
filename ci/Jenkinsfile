@@ -45,7 +45,7 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-          ['graphin'].each {
+          ['graphin-icons'].each {
             sh "cd packages/${it} && yarn build && yarn npm publish && cd .."
           }
         }

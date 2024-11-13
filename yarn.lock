@@ -733,7 +733,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@antv/graphin-icons@npm:1.0.0-siren.39, @antv/graphin-icons@workspace:packages/graphin-icons":
+"@antv/graphin-icons@npm:1.0.0-siren.39":
+  version: 1.0.0-siren.39
+  resolution: "@antv/graphin-icons@npm:1.0.0-siren.39::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-virtual%2F%40antv%2Fgraphin-icons%2F-%2F%40antv%2Fgraphin-icons-1.0.0-siren.39.tgz"
+  checksum: 10c0/e706b7ba2bf6c9008fcdf4b69554a1cd0e107d815fdc2a3d16ba2b36fc336a94ef925d730d658ded1c9eca30aeb5c060a4647c6ec1cb7aa7002bda844749a702
+  languageName: node
+  linkType: hard
+
+"@antv/graphin-icons@workspace:packages/graphin-icons":
   version: 0.0.0-use.local
   resolution: "@antv/graphin-icons@workspace:packages/graphin-icons"
   dependencies:
