@@ -8,7 +8,7 @@
   "scripts": {
     "start": "father build --watch",
     "build": "npm run clean && father build",
-    "build:umd": "webpack --mode production -c ./webpack.config.js",
+    "build:umd": "rimraf dist && webpack --mode production --env.NODE_ENV=production -c ./webpack.config.js",
     "clean": "rimraf es esm lib dist"
   },
   "dependencies": {
