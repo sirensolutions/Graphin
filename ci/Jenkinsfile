@@ -34,13 +34,8 @@ pipeline {
           sh("""
             set +x
             gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"
-            node --version
-            yarn --version
-            corepack enable
-            yarn --version
             npm run auth
             yarn
-            yarn bootstrap:ci
             """
           )
         }
