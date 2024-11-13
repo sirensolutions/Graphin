@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "auth": "yarn config set --home 'npmRegistries[\"https://europe-west1-npm.pkg.dev/siren-cicd/npm-virtual/\"].npmAuthToken' $(gcloud auth print-access-token) && yarn config set --home 'npmRegistries[\"https://europe-west1-npm.pkg.dev/siren-cicd/npm-standard/\"].npmAuthToken' $(gcloud auth print-access-token)",
     "graphin": "cd packages/graphin && npm run start ",
     "components": "cd packages/graphin-components && npm run start",
     "icons": "cd packages/graphin-icons && npm run start",
