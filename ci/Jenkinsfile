@@ -34,8 +34,8 @@ pipeline {
           sh("""
             set +x
             gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"
-            . ~/.profile
-            nvm install & nvm use
+            node --version
+            corepack enable
             npm run auth
             yarn
             yarn bootstrap:ci
