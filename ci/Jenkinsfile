@@ -35,11 +35,9 @@ pipeline {
             set +x
             gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"
             node --version
-            corepack enable
-            corepack --version
             yarn --version
-            pwd
-            ls -a
+            corepack enable
+            yarn --version
             npm run auth
             yarn
             yarn bootstrap:ci
