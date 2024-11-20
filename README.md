@@ -21,7 +21,6 @@ A React toolkit for graph analysis based on G6
 To set up the repo, run the following commands:
 ```shell
 yarn
-yarn bootstrap:ci
 ```
 To publish, run the following commands for the package you want to publish (`graphin-icons`, `graphin`, `graphin-components`):
 ```shell

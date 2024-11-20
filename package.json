@@ -16,7 +16,6 @@
     "docs:deploy": "gh-pages -d dist",
     "docs:deploy-2": "gh-pages -d ./dist -r https://github.com/antvis/graphin-docs.git",
     "remove:deps": "rm -rf packages/graphin/node_modules/antd && rm -rf packages/graphin/node_modules/@ant-design/icons && rm -rf packages/graphin-components/node_modules/antd && rm -rf packages/graphin-components/node_modules/@ant-design/icons && rm -rf packages/graphin-icons/node_modules/@ant-design/icons  && rm -rf packages/graphin-icons/node_modules/antd && rm -rf packages/dumi-theme-graphin/node_modules/@ant-design/icons && rm -rf packages/dumi-theme-graphin/node_modules/antd",
-    "bootstrap:ci": "lerna bootstrap --ignore @antv/graphin-studio --ignore graphin-site --ignore @antv/graphin-graphscope",
     "build": "lerna run build",
     "contributor": "git-contributor",
     "clean": "lerna clean && npm run rm-package-lock",
