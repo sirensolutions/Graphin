@@ -48,8 +48,13 @@ build
 package-lock.json
 
 
-# yarn-lock
-yarn.lock
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 .umi
 

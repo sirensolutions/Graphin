@@ -1,6 +1,6 @@
 {
   "name": "@antv/graphin-components",
-  "version": "2.4.0-siren.38",
+  "version": "2.4.0-siren.39",
   "description": "Components for graphin",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run clean && father build --watch",
     "build": "npm run clean && father build & npm run  build:umd",
-    "build:umd": "node --max_old_space_size=8192 ./node_modules/webpack/bin/webpack.js   --mode production  -c ./webpack.config.js ",
+    "build:umd": "webpack --mode production -c ./webpack.config.js",
     "test": "jest",
     "clean": "rimraf es esm lib dist"
   },
@@ -55,8 +55,8 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@antv/util": "^2.0.10",
-    "@antv/graphin": "2.7.17-siren.0"
+    "@antv/graphin": "2.7.17-siren.1",
+    "@antv/util": "^2.0.10"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

@@ -30,30 +30,25 @@ pipeline {
 
     stage ('Boostrap') {
       steps {
-        sh 'yarn && yarn bootstrap:ci'
+        withCredentials([file(credentialsId: 'gcloud-jenkins-sirencicd', variable: 'GCLOUD_KEY_FILE')]) {
+          sh("""
+            set +x
+            gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"
+            yarn
+            """
+          )
+        }
       }
     }
 
     stage('Deploy') {
       steps {
-        withCredentials([
-          [
-            $class: 'UsernamePasswordMultiBinding',
-            credentialsId: 'artifactory-sirenpublisher',
-            usernameVariable: 'ARTIFACTORY_USERNAME',
-            passwordVariable: 'ARTIFACTORY_PASSWORD'
-          ]
-        ]) {
-          sh 'curl -u"${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}" https://artifactory.siren.io/artifactory/api/npm/sirensolutions-npm-local/auth/antv > ~/.npmrc'
-          script {
-            ['graphin-icons', 'graphin', 'graphin-components'].each {
-              sh "cd packages/${it} && npm run build && mv .npmrc .npmrc.bak && npm publish --no-workspaces --registry=https://artifactory.siren.io/artifactory/api/npm/sirensolutions-npm-local && mv .npmrc.bak .npmrc && cd .."
-            }
+        script {
+          ['graphin-icons', 'graphin', 'graphin-components'].each {
+            sh "cd packages/${it} && yarn build && yarn npm publish && cd .."
           }
         }
       }
     }
-
   }
-
 }

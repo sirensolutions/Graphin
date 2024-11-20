@@ -16,7 +16,6 @@
     "docs:deploy": "gh-pages -d dist",
     "docs:deploy-2": "gh-pages -d ./dist -r https://github.com/antvis/graphin-docs.git",
     "remove:deps": "rm -rf packages/graphin/node_modules/antd && rm -rf packages/graphin/node_modules/@ant-design/icons && rm -rf packages/graphin-components/node_modules/antd && rm -rf packages/graphin-components/node_modules/@ant-design/icons && rm -rf packages/graphin-icons/node_modules/@ant-design/icons  && rm -rf packages/graphin-icons/node_modules/antd && rm -rf packages/dumi-theme-graphin/node_modules/@ant-design/icons && rm -rf packages/dumi-theme-graphin/node_modules/antd",
-    "bootstrap:ci": "lerna bootstrap --ignore @antv/graphin-studio --ignore graphin-site --ignore @antv/graphin-graphscope",
     "build": "lerna run build",
     "contributor": "git-contributor",
     "clean": "lerna clean && npm run rm-package-lock",
@@ -33,6 +32,7 @@
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "devDependencies": {
+    "@antv/dumi-theme-antv": "0.2.0",
     "@types/jest": "^27.0.3",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
@@ -44,7 +44,6 @@
     "d3": "^6.3.1",
     "d3-selection": "^2.0.0",
     "dumi": "^1.1.35",
-    "@antv/dumi-theme-antv": "0.2.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
@@ -97,5 +96,10 @@
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0"
-  }
+  },
+  "engines": {
+    "node": "22.11.0",
+    "yarn": "4.5.1"
+  },
+  "packageManager": "yarn@4.5.1"
 }

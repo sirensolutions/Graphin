@@ -1,6 +1,6 @@
 {
   "name": "@antv/graphin-graphscope",
-  "version": "1.0.3-siren.36",
+  "version": "1.0.3-siren.37",
   "description": "An Example for GraphScope",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -8,14 +8,14 @@
   "scripts": {
     "start": "father build --watch",
     "build": "npm run clean && father build",
-    "build:umd": "rimraf dist && node --max_old_space_size=8192 ./node_modules/webpack/bin/webpack.js  --env.NODE_ENV=production  -c ./webpack.config.js ",
+    "build:umd": "rimraf dist && webpack --mode production --env.NODE_ENV=production -c ./webpack.config.js",
     "clean": "rimraf es esm lib dist"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
-    "@antv/graphin": "2.7.17-siren.0",
-    "@antv/graphin-components": "2.4.0-siren.38",
-    "@antv/graphin-icons": "1.0.0-siren.38",
+    "@antv/graphin": "2.7.17-siren.1",
+    "@antv/graphin-components": "2.4.0-siren.39",
+    "@antv/graphin-icons": "1.0.0-siren.39",
     "antd": "^4.10.3",
     "classnames": "^2.2.6",
     "re-resizable": "^6.9.0",
