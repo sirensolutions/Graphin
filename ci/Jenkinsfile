@@ -34,7 +34,6 @@ pipeline {
           sh("""
             set +x
             gcloud auth activate-service-account --key-file="${GCLOUD_KEY_FILE}"
-            npm run auth
             yarn
             """
           )
