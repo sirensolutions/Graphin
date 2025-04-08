@@ -479,9 +479,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antv/g6-core@npm:0.8.24-siren.3":
-  version: 0.8.24-siren.3
-  resolution: "@antv/g6-core@npm:0.8.24-siren.3::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-virtual%2F%40antv%2Fg6-core%2F-%2F%40antv%2Fg6-core-0.8.24-siren.3.tgz"
+"@antv/g6-core@npm:0.8.24-siren.4":
+  version: 0.8.24-siren.4
+  resolution: "@antv/g6-core@npm:0.8.24-siren.4::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-standard%2F%40antv%2Fg6-core%2F-%2F%40antv%2Fg6-core-0.8.24-siren.4.tgz"
   dependencies:
     "@antv/algorithm": "npm:^0.1.26"
     "@antv/dom-util": "npm:^2.0.1"
@@ -493,25 +493,25 @@ __metadata:
     "@antv/util": "npm:~2.0.5"
     ml-matrix: "npm:^6.5.0"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/6fe3fdce338d96adb072d401848e07c0f8c2ef1761090ae0838bccf738a2c60925fbb6ee114c714252e83cd9f0ef7828e4e53d27532e139ab2509d18bce7eb78
+  checksum: 10c0/488282144074dec9687af64fb851b8cfa4dd28b702a4507f19d07fde6f4d24bf4b2baf0d0d429e70f3fdced5863a083983b38002990780ddbe35c18b0531ded1
   languageName: node
   linkType: hard
 
-"@antv/g6-element@npm:0.8.24-siren.3":
-  version: 0.8.24-siren.3
-  resolution: "@antv/g6-element@npm:0.8.24-siren.3::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-virtual%2F%40antv%2Fg6-element%2F-%2F%40antv%2Fg6-element-0.8.24-siren.3.tgz"
+"@antv/g6-element@npm:0.8.24-siren.4":
+  version: 0.8.24-siren.4
+  resolution: "@antv/g6-element@npm:0.8.24-siren.4::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-standard%2F%40antv%2Fg6-element%2F-%2F%40antv%2Fg6-element-0.8.24-siren.4.tgz"
   dependencies:
     "@antv/g-base": "npm:^0.5.1"
-    "@antv/g6-core": "npm:0.8.24-siren.3"
+    "@antv/g6-core": "npm:0.8.24-siren.4"
     "@antv/util": "npm:~2.0.5"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/79c32064549b5e47f5455d4157891281efdaf98e92116f7004ea2aa823f0da32d6e6a8e841ee9ebd3fde762993fddab068f79886bd0a7eb68288e9baf1133e19
+  checksum: 10c0/97e1ef8e973ace85232b45b6c553f81e712dee6f20dfcb6f3b615d2b6c068101233e635a86ef5643607a240e4ae71acd60e5b46102833432402583cdc316646c
   languageName: node
   linkType: hard
 
-"@antv/g6-pc@npm:0.8.24-siren.3":
-  version: 0.8.24-siren.3
-  resolution: "@antv/g6-pc@npm:0.8.24-siren.3::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-virtual%2F%40antv%2Fg6-pc%2F-%2F%40antv%2Fg6-pc-0.8.24-siren.3.tgz"
+"@antv/g6-pc@npm:0.8.24-siren.4":
+  version: 0.8.24-siren.4
+  resolution: "@antv/g6-pc@npm:0.8.24-siren.4::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-standard%2F%40antv%2Fg6-pc%2F-%2F%40antv%2Fg6-pc-0.8.24-siren.4.tgz"
   dependencies:
     "@ant-design/colors": "npm:^4.0.5"
     "@antv/algorithm": "npm:^0.1.26"
@@ -521,9 +521,9 @@ __metadata:
     "@antv/g-canvas": "npm:^0.5.2"
     "@antv/g-math": "npm:^0.1.1"
     "@antv/g-svg": "npm:^0.5.1"
-    "@antv/g6-core": "npm:0.8.24-siren.3"
-    "@antv/g6-element": "npm:0.8.24-siren.3"
-    "@antv/g6-plugin": "npm:0.8.24-siren.3"
+    "@antv/g6-core": "npm:0.8.24-siren.4"
+    "@antv/g6-element": "npm:0.8.24-siren.4"
+    "@antv/g6-plugin": "npm:0.8.24-siren.4"
     "@antv/hierarchy": "npm:^0.6.10"
     "@antv/layout": "npm:^0.3.0"
     "@antv/matrix-util": "npm:^3.1.0-beta.3"
@@ -535,35 +535,35 @@ __metadata:
     insert-css: "npm:^2.0.0"
     ml-matrix: "npm:^6.5.0"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/f9db01ac8981d5025b2aaec67c308abd8a74363aab91a5aacade177462734416417c7951a3ba0b97e7d357618b1d16f67b8b94231e2cda16744a5cca15c9aac0
+  checksum: 10c0/3a0ec48fb0ba30e99a9fe804285a12c6588d6928b1b5a0c419bb24e701eb856629394ce0b1aad3207f279925939b5b164db05b41d8deea0957911e5dc9e70ead
   languageName: node
   linkType: hard
 
-"@antv/g6-plugin@npm:0.8.24-siren.3":
-  version: 0.8.24-siren.3
-  resolution: "@antv/g6-plugin@npm:0.8.24-siren.3::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-virtual%2F%40antv%2Fg6-plugin%2F-%2F%40antv%2Fg6-plugin-0.8.24-siren.3.tgz"
+"@antv/g6-plugin@npm:0.8.24-siren.4":
+  version: 0.8.24-siren.4
+  resolution: "@antv/g6-plugin@npm:0.8.24-siren.4::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-standard%2F%40antv%2Fg6-plugin%2F-%2F%40antv%2Fg6-plugin-0.8.24-siren.4.tgz"
   dependencies:
     "@antv/dom-util": "npm:^2.0.2"
     "@antv/g-base": "npm:^0.5.1"
     "@antv/g-canvas": "npm:^0.5.2"
     "@antv/g-svg": "npm:^0.5.2"
-    "@antv/g6-core": "npm:0.8.24-siren.3"
-    "@antv/g6-element": "npm:0.8.24-siren.3"
+    "@antv/g6-core": "npm:0.8.24-siren.4"
+    "@antv/g6-element": "npm:0.8.24-siren.4"
     "@antv/matrix-util": "npm:^3.1.0-beta.3"
     "@antv/path-util": "npm:^2.0.3"
     "@antv/scale": "npm:^0.3.4"
     "@antv/util": "npm:^2.0.9"
     insert-css: "npm:^2.0.0"
-  checksum: 10c0/92201367fdd9778e8865762371650175920150ab8d2fee3f6b3789206e32e15fc7b12ad8ea9ba4e2515cd1420b6f349cb7032e8cb5a9a93a815a50973f08c42f
+  checksum: 10c0/f80209e291b1b18729e176b46928eea88d546056cc4683370e4e2a1376ee15fafe06a9a4419255eb6ae300fc04edcfa0e2ea27df1d7d1ee34cbe91d4213ba0af
   languageName: node
   linkType: hard
 
-"@antv/g6@npm:4.8.24-siren.3":
-  version: 4.8.24-siren.3
-  resolution: "@antv/g6@npm:4.8.24-siren.3::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-virtual%2F%40antv%2Fg6%2F-%2F%40antv%2Fg6-4.8.24-siren.3.tgz"
+"@antv/g6@npm:4.8.24-siren.4":
+  version: 4.8.24-siren.4
+  resolution: "@antv/g6@npm:4.8.24-siren.4::__archiveUrl=https%3A%2F%2Feurope-west1-npm.pkg.dev%2Fsiren-cicd%2Fnpm-standard%2F%40antv%2Fg6%2F-%2F%40antv%2Fg6-4.8.24-siren.4.tgz"
   dependencies:
-    "@antv/g6-pc": "npm:0.8.24-siren.3"
-  checksum: 10c0/cd8ec3f5890cc3133945113942f4d20dd733544e8c1d576be3b3e379bc49e645a52388f367430b0b5af84c6a3de9ac4ab13865b1b17c7140e7b2073832fef3de
+    "@antv/g6-pc": "npm:0.8.24-siren.4"
+  checksum: 10c0/9b395db428f3d8fc6efb58491914f65627588e5ea08612e803d47baf10d7efbecccded9fcf22670910ebb56afd112c953f6b9aa9ef6cd0455723ad64e7ee26c7
   languageName: node
   linkType: hard
 
@@ -746,7 +746,7 @@ __metadata:
   resolution: "@antv/graphin@workspace:packages/graphin"
   dependencies:
     "@antv/g-base": "npm:^0.5.9"
-    "@antv/g6": "npm:4.8.24-siren.3"
+    "@antv/g6": "npm:4.8.24-siren.4"
     "@antv/hierarchy": "npm:^0.6.6"
     "@antv/util": "npm:^2.0.10"
     "@babel/core": "npm:^7.16.0"
