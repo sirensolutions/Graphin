@@ -652,11 +652,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antv/graphin-components@npm:2.4.0-siren.41, @antv/graphin-components@workspace:packages/graphin-components":
+"@antv/graphin-components@npm:2.4.0-siren.42, @antv/graphin-components@workspace:packages/graphin-components":
   version: 0.0.0-use.local
   resolution: "@antv/graphin-components@workspace:packages/graphin-components"
   dependencies:
-    "@antv/graphin": "npm:2.7.17-siren.3"
+    "@antv/graphin": "npm:2.7.17-siren.4"
     "@antv/util": "npm:^2.0.10"
     "@babel/cli": "npm:^7.16.0"
     "@babel/core": "npm:^7.16.0"
@@ -699,9 +699,9 @@ __metadata:
   resolution: "@antv/graphin-graphscope@workspace:packages/graphin-graphscope"
   dependencies:
     "@ant-design/icons": "npm:^4.3.0"
-    "@antv/graphin": "npm:2.7.17-siren.3"
-    "@antv/graphin-components": "npm:2.4.0-siren.41"
-    "@antv/graphin-icons": "npm:1.0.0-siren.41"
+    "@antv/graphin": "npm:2.7.17-siren.4"
+    "@antv/graphin-components": "npm:2.4.0-siren.42"
+    "@antv/graphin-icons": "npm:1.0.0-siren.42"
     "@babel/cli": "npm:^7.6.2"
     "@babel/core": "npm:^7.6.2"
     "@babel/plugin-proposal-class-properties": "npm:^7.5.5"
@@ -733,7 +733,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@antv/graphin-icons@npm:1.0.0-siren.41, @antv/graphin-icons@workspace:packages/graphin-icons":
+"@antv/graphin-icons@npm:1.0.0-siren.42, @antv/graphin-icons@workspace:packages/graphin-icons":
   version: 0.0.0-use.local
   resolution: "@antv/graphin-icons@workspace:packages/graphin-icons"
   dependencies:
@@ -741,7 +741,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@antv/graphin@npm:2.7.17-siren.3, @antv/graphin@workspace:packages/graphin":
+"@antv/graphin@npm:2.7.17-siren.4, @antv/graphin@workspace:packages/graphin":
   version: 0.0.0-use.local
   resolution: "@antv/graphin@workspace:packages/graphin"
   dependencies:
