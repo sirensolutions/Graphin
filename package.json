@@ -101,5 +101,5 @@
     "node": "22.11.0",
     "yarn": "4.6.0"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.9.2"
 }
